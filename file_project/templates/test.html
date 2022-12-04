@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Create TIFF</title>
+</head>
+<body class="container">
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя файла</label><br>
+            <input type="text" name="name" />
+        </p>
+
+        <input type="submit" value="Сохранить" />
+    </form>
+    {% if post.count > 0 %}
+    <h2>Список файлов: </h2>
+    <table>
+        <thead>
+           <th>Id</th><th>Имя файла</th><th>Материал</th><th>Количество</th><th>Ширина</th>
+           <th>Длина</th><th>Разрешение</th><th>Model</th><th>Цена</th>><th>Дата создания</th><th></th>
+       </thead>
+        {% for post in post %}
+        <tr>
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ product.material }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.width }}</td>
+            <td>{{ product.length }}</td>
+            <td>{{ product.resolution }}</td>
+            <td>{{ product.color_model }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.created_at }}</td>
+
+            <td><a href="edit/{{post.id}}">Изменить</a>
+                <a href="delete/{{post.id}}">Удалить</a>
+                <a href="calc/{{product.id}}">Посчитать</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <title>Модели в Django</title>-->
+<!--</head>-->
+<!--<body class="container">-->
+<!--    <form method="POST" action="create/">-->
+<!--        {% csrf_token %}-->
+<!--        <p>-->
+<!--            <label>Введите имя</label><br>-->
+<!--            <input type="text" name="name" />-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Введите возраст</label><br>-->
+<!--            <input type="number" name="age" />-->
+<!--        </p>-->
+<!--        <input type="submit" value="Сохранить" >-->
+<!--    </form>-->
+<!--    {% if people.count > 0 %}-->
+<!--    <h2>Список пользователей</h2>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--           <th>Id</th><th>Имя</th><th>Возраст</th><th></th>-->
+<!--       </thead>-->
+<!--        {% for person in people %}-->
+<!--        <tr>-->
+<!--            <td>{{ person.id }}</td>-->
+<!--            <td>{{ person.name }}</td>-->
+<!--            <td>{{ person.age }}</td>-->
+<!--            <td><a href="edit/{{person.id}}">Изменить</a> |-->
+<!--                <a href="delete/{{person.id}}">Удалить</a></td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
+<!--    {% endif %}-->
+<!--</body>-->
+<!--</html>-->
+
+
